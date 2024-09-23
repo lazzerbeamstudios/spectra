@@ -1,5 +1,5 @@
 docker:
-  image: lazzerbeam/api-v1:ute1726809903
+  image: lazzerbeam/spectra:ute1726809903
 
 api:
   env: docker
