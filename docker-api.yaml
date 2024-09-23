@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  api-service:
+    build: .
+    image: lazzerbeam/spectra:ute1726809903
+    volumes:
+      - .:/code
+    ports:
+      - "8080:8080"
+    command: >
+      sh -c
+      "go run api-go --env=docker --server=api"
+    networks:
+      docker-network: {}
+
+networks:
+  docker-network:
+    external: true

@@ -1,0 +1,15 @@
+api:
+  env: prod
+  database: prod
+  replicas: 2
+
+cron:
+  env: prod
+  database: prod
+  replicas: 1
+
+cloud: gcp
+
+gcp:
+  ip: api-prod-ip
+  domain: api-prod.lazzerbeam.org
