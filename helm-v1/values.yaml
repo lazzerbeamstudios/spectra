@@ -1,0 +1,14 @@
+docker:
+  image: lazzerbeam/api-v1:ute1726809903
+
+api:
+  env: docker
+  database: dev
+  replicas: 1
+
+cron:
+  env: docker
+  database: dev
+  replicas: 1
+
+cloud: k3d

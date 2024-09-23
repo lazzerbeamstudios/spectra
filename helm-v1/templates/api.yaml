@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-go-deployment
+spec:
+  replicas: {{ .Values.api.replicas }}
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: api-go-app
+  template:
+    metadata:
+      labels:
+        app: api-go-app
+    spec:
+      containers:
+        - name: api-go-container
+          imagePullPolicy: Always
+          image: {{ .Values.docker.image }}
+          ports:
+            - containerPort: 8080
+          command: ["/bin/sh"]
+          args: [
+            "-c",
+            "atlas migrate apply --env {{ .Values.api.database }}
+            && go run api-go --env={{ .Values.api.env }} --server=api",
+          ]
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cron-go-deployment
+spec:
+  replicas: {{ .Values.cron.replicas }}
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: cron-go-app
+  template:
+    metadata:
+      labels:
+        app: cron-go-app
+    spec:
+      containers:
+        - name: cron-go-container
+          imagePullPolicy: Always
+          image: {{ .Values.docker.image }}
+          ports:
+            - containerPort: 8080
+          command: ["/bin/sh"]
+          args: [
+            "-c",
+            "atlas migrate apply --env {{ .Values.cron.database }}
+            && go run api-go --env={{ .Values.cron.env }} --server=cron",
+          ]

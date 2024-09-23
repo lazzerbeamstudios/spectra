@@ -1,0 +1,15 @@
+api:
+  env: stag
+  database: stag
+  replicas: 1
+
+cron:
+  env: stag
+  database: stag
+  replicas: 1
+
+cloud: gcp
+
+gcp:
+  ip: api-stag-ip
+  domain: api-stag.lazzerbeam.org

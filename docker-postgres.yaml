@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  postgres-service:
+    image: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=Ehnz2a3AyrKqnurbXjx9
+    networks:
+      docker-network: {}
+
+volumes:
+  postgres_data:
+
+networks:
+  docker-network:
+    external: true

@@ -1,0 +1,11 @@
+api:
+  env: docker
+  database: docker
+  replicas: 1
+
+cron:
+  env: docker
+  database: docker
+  replicas: 1
+
+cloud: k3d
