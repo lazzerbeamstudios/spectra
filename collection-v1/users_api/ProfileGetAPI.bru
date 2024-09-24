@@ -1,0 +1,22 @@
+meta {
+  name: ProfileGetAPI
+  type: http
+  seq: 1
+}
+
+get {
+  url: http://localhost:8080/users/profile
+  body: json
+  auth: none
+}
+
+headers {
+  Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InlvZGFAeWFob28uY29tIiwiZXhwIjoxNzI3Nzk5ODAwLCJqdGkiOiIxIn0.RdLz_MOoAR9jFn4otDIda4QJvCKMPfMQ6SOdXiYUzY0
+}
+
+body:json {
+  {
+    "email": "yoda@yahoo.com",
+    "password": "admin123"
+  }
+}
