@@ -12,9 +12,8 @@ type Profile struct {
 }
 
 type ProfileUpdate struct {
-	_       struct{}  `json:"-" additionalProperties:"true"`
-	ID      int       `json:"id,omitempty"`
-	Email   string    `json:"email,omitempty"`
-	Name    string    `json:"name,omitempty"`
-	Created time.Time `json:"created,omitempty"`
+	_     struct{} `json:"-" additionalProperties:"true"`
+	ID    int      `json:"id,omitempty"`
+	Email string   `json:"email,omitempty"`
+	Name  string   `json:"name,omitempty"`
 }

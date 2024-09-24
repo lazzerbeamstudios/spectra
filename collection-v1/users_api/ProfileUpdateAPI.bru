@@ -1,10 +1,10 @@
 meta {
-  name: ProfileGetAPI
+  name: ProfileUpdateAPI
   type: http
-  seq: 1
+  seq: 2
 }
 
-get {
+put {
   url: http://localhost:8080/users/profile
   body: json
   auth: none
@@ -12,4 +12,13 @@ get {
 
 headers {
   Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InlvZGFAeWFob28uY29tIiwiZXhwIjoxNzI3Nzk5ODAwLCJqdGkiOiIxIn0.RdLz_MOoAR9jFn4otDIda4QJvCKMPfMQ6SOdXiYUzY0
+}
+
+body:json {
+  {
+    "object": {
+      "id": 1,
+      "name": "yoda"
+    }
+  }
 }
