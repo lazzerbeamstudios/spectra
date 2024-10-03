@@ -38,7 +38,7 @@ func (input *ProfileUpdateEmailInput) Resolve(ctx huma.Context) []error {
 
 	input.Body.Object.Email = strings.ToLower(input.Body.Object.Email)
 	if input.Body.Object.Email == profileObj.Email {
-		input.Body.Object.Email = ""
+		return []error{huma.Error400BadRequest("This email is not available.")}
 	} else {
 		usersEmail, err := db.EntDB.User.Query().Where(user.EmailEqualFold(input.Body.Object.Email)).All(context.Background())
 		if len(usersEmail) > 0 || err != nil {
