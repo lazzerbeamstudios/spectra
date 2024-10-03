@@ -3,7 +3,6 @@ package users_api
 import (
 	"context"
 	"encoding/json"
-	"strings"
 
 	"github.com/danielgtaylor/huma/v2"
 	"github.com/jinzhu/copier"
@@ -30,22 +29,6 @@ func (input *ProfileUpdateInput) Resolve(ctx huma.Context) []error {
 	if authID != input.Body.Object.ID {
 		return []error{huma.Error401Unauthorized("User doesn't have permission.")}
 	}
-
-	profileObj, err := db.EntDB.User.Query().Where(user.ID(input.Body.Object.ID)).Only(context.Background())
-	if err != nil {
-		return []error{huma.Error404NotFound("User not found.")}
-	}
-
-	input.Body.Object.Email = strings.ToLower(input.Body.Object.Email)
-	if input.Body.Object.Email == profileObj.Email {
-		input.Body.Object.Email = ""
-	} else {
-		usersEmail, err := db.EntDB.User.Query().Where(user.EmailEqualFold(input.Body.Object.Email)).All(context.Background())
-		if len(usersEmail) > 0 || err != nil {
-			return []error{huma.Error400BadRequest("This email is not available.")}
-		}
-	}
-
 	return nil
 }
 

@@ -18,7 +18,7 @@ import (
 type ProfileUpdateEmailInput struct {
 	Auth string `header:"Authorization"`
 	Body struct {
-		Object models.ProfileUpdate `json:"object"`
+		Object models.ProfileUpdateEmail `json:"object"`
 	}
 }
 
