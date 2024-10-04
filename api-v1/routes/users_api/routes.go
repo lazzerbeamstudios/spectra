@@ -22,4 +22,11 @@ func Register(api huma.API) {
 		Tags:        []string{"users"},
 	}, ProfileUpdateAPI)
 
+	huma.Register(api, huma.Operation{
+		OperationID: "Profile Update Email",
+		Method:      http.MethodPut,
+		Path:        "/users/profile/email",
+		Tags:        []string{"users"},
+	}, ProfileUpdateEmailAPI)
+
 }

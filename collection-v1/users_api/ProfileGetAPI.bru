@@ -1,0 +1,15 @@
+meta {
+  name: ProfileGetAPI
+  type: http
+  seq: 1
+}
+
+get {
+  url: http://localhost:8080/users/profile
+  body: json
+  auth: none
+}
+
+headers {
+  Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InlvZGFAeWFob28uY29tIiwiZXhwIjoxNzI4NjExMTc0LCJqdGkiOiIxIn0.a8lfg4U3AJnnjT634GaA36Fiyb08jOGNIX9KhBpIYvc
+}

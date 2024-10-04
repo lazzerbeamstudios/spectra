@@ -21,6 +21,8 @@ type User struct {
 	Email string `json:"email,omitempty"`
 	// Password holds the value of the "password" field.
 	Password string `json:"password,omitempty"`
+	// Name holds the value of the "name" field.
+	Name string `json:"name,omitempty"`
 	// Created holds the value of the "created" field.
 	Created      time.Time `json:"created,omitempty"`
 	selectValues sql.SelectValues
@@ -33,7 +35,7 @@ func (*User) scanValues(columns []string) ([]any, error) {
 		switch columns[i] {
 		case user.FieldID:
 			values[i] = new(sql.NullInt64)
-		case user.FieldEmail, user.FieldPassword:
+		case user.FieldEmail, user.FieldPassword, user.FieldName:
 			values[i] = new(sql.NullString)
 		case user.FieldCreated:
 			values[i] = new(sql.NullTime)
@@ -69,6 +71,12 @@ func (u *User) assignValues(columns []string, values []any) error {
 				return fmt.Errorf("unexpected type %T for field password", values[i])
 			} else if value.Valid {
 				u.Password = value.String
+			}
+		case user.FieldName:
+			if value, ok := values[i].(*sql.NullString); !ok {
+				return fmt.Errorf("unexpected type %T for field name", values[i])
+			} else if value.Valid {
+				u.Name = value.String
 			}
 		case user.FieldCreated:
 			if value, ok := values[i].(*sql.NullTime); !ok {
@@ -117,6 +125,9 @@ func (u *User) String() string {
 	builder.WriteString(", ")
 	builder.WriteString("password=")
 	builder.WriteString(u.Password)
+	builder.WriteString(", ")
+	builder.WriteString("name=")
+	builder.WriteString(u.Name)
 	builder.WriteString(", ")
 	builder.WriteString("created=")
 	builder.WriteString(u.Created.Format(time.ANSIC))
