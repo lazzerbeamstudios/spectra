@@ -4,6 +4,8 @@ import (
 	"net/http"
 
 	"github.com/danielgtaylor/huma/v2"
+
+	"api-go/middleware"
 )
 
 func Register(api huma.API) {
@@ -13,6 +15,7 @@ func Register(api huma.API) {
 		Method:      http.MethodGet,
 		Path:        "/users/profile",
 		Tags:        []string{"users"},
+		Middlewares: huma.Middlewares{middleware.AuthMiddleware},
 	}, ProfileGetAPI)
 
 	huma.Register(api, huma.Operation{
