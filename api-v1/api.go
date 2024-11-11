@@ -6,11 +6,9 @@ import (
 	"time"
 
 	"github.com/danielgtaylor/huma/v2"
-	"github.com/danielgtaylor/huma/v2/adapters/humaecho"
+	"github.com/danielgtaylor/huma/v2/adapters/humago"
 	"github.com/danielgtaylor/huma/v2/humacli"
 	"github.com/go-co-op/gocron/v2"
-	"github.com/labstack/echo/v4"
-	"github.com/labstack/echo/v4/middleware"
 
 	"api-go/environment"
 	"api-go/mutations"
@@ -58,12 +56,8 @@ func runApi(hooks humacli.Hooks, options *OptionsCLI) {
 		config.DocsPath = ""
 	}
 
-	router := echo.New()
-	router.Use(middleware.CORSWithConfig(middleware.CORSConfig{
-		AllowOrigins: []string{"*"},
-	}))
-
-	api := humaecho.New(router, config)
+	router := http.NewServeMux()
+	api := humago.New(router, config)
 
 	auth_api.Register(api)
 	home_api.Register(api)
