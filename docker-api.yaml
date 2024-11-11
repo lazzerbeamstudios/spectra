@@ -3,7 +3,7 @@ version: "3.9"
 services:
   api-service:
     build: .
-    image: lazzerbeam/spectra:ute1726809903
+    image: lazzerbeam/spectra:ute1731364188
     volumes:
       - .:/code
     ports:
