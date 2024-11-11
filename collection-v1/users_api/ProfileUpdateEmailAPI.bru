@@ -11,13 +11,13 @@ put {
 }
 
 headers {
-  Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InlvZGFAeWFob28uY29tIiwiZXhwIjoxNzI4NjExMTc0LCJqdGkiOiIxIn0.a8lfg4U3AJnnjT634GaA36Fiyb08jOGNIX9KhBpIYvc
+  Authorization: {{token}}
 }
 
 body:json {
   {
     "object": {
-      "id": 1,
+      "id": {{id}},
       "email": "yoda@yahoo.com"
     }
   }
