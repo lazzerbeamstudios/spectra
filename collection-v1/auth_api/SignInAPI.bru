@@ -16,3 +16,10 @@ body:json {
     "password": "admin123"
   }
 }
+
+script:post-response {
+  let data = res.getBody();
+  if (data.token) {
+   bru.setEnvVar('token', data.token);
+  }
+}

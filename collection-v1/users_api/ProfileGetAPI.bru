@@ -11,5 +11,12 @@ get {
 }
 
 headers {
-  Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InlvZGFAeWFob28uY29tIiwiZXhwIjoxNzI4NjExMTc0LCJqdGkiOiIxIn0.a8lfg4U3AJnnjT634GaA36Fiyb08jOGNIX9KhBpIYvc
+  Authorization: {{token}}
+}
+
+script:post-response {
+  let data = res.getBody();
+  if (data.object && data.object.id) {
+   bru.setEnvVar('id', data.object.id); 
+  }
 }
