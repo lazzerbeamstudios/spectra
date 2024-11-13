@@ -52,16 +52,16 @@ func main() {
 }
 
 func runApi(hooks humacli.Hooks, options *OptionsCLI) {
+	router := echo.New()
+	router.Use(middleware.CORSWithConfig(middleware.CORSConfig{
+		AllowOrigins: []string{"*"},
+	}))
+
 	config := huma.DefaultConfig("Lazzer Beam", "1.0.0")
 	if options.Env == "prod" {
 		config.OpenAPIPath = ""
 		config.DocsPath = ""
 	}
-
-	router := echo.New()
-	router.Use(middleware.CORSWithConfig(middleware.CORSConfig{
-		AllowOrigins: []string{"*"},
-	}))
 
 	api := humaecho.New(router, config)
 
