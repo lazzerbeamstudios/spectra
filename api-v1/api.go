@@ -35,7 +35,7 @@ func main() {
 			panic("Cannot load environment")
 		}
 
-		db.SetDB(cfg.Database)
+		db.SetEntDB(cfg.Database)
 		db.SetBunDB(cfg.Database)
 		auth.SetSecretJWT(cfg.Secret)
 
