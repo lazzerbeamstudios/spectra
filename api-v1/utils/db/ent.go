@@ -13,7 +13,7 @@ import (
 
 var EntDB *ent.Client
 
-func SetDB(urlDB string) {
+func SetEntDB(urlDB string) {
 	connDB, err := sql.Open("pgx", urlDB)
 	if err != nil {
 		panic("Failed to open database connection")
