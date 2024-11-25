@@ -11,48 +11,48 @@ import (
 	"google.golang.org/api/option"
 )
 
-type FileClientStruct struct {
+type StorageClientGoogleStruct struct {
 	bucket        string
 	project       string
 	storageClient *storage.Client
 }
 
-var FileClient *FileClientStruct
+var StorageClientGoogle *StorageClientGoogleStruct
 
-func (fileClient *FileClientStruct) Upload(fileDir string, fileBlob []byte) (string, error) {
-	ctx := context.Background()
-	ctx, cancel := context.WithTimeout(ctx, time.Second*60)
+func (client *StorageClientGoogleStruct) UploadFile(path string, content []byte) (string, error) {
+	ctx, cancel := context.WithTimeout(context.Background(), time.Second*60)
 	defer cancel()
 
-	storageWriter := fileClient.storageClient.Bucket(fileClient.bucket).Object(fileDir).NewWriter(ctx)
-	fileBuffer := bytes.NewBuffer(fileBlob)
+	writer := client.storageClient.Bucket(client.bucket).Object(path).NewWriter(ctx)
+	reader := bytes.NewBuffer(content)
 
-	_, err := io.Copy(storageWriter, fileBuffer)
-	if err != nil {
+	if _, err := io.Copy(writer, reader); err != nil {
 		return "", err
 	}
 
-	err = storageWriter.Close()
-	if err != nil {
+	if err := writer.Close(); err != nil {
 		return "", err
 	}
 
-	url := "https://storage.googleapis.com/" + fileClient.bucket + "/" + fileDir
+	url := "https://storage.googleapis.com/" + client.bucket + "/" + path
 	return url, nil
 }
 
 func SetStorage(credentials string, project string, bucket string) {
 	credentialsByte, err := base64.StdEncoding.DecodeString(credentials)
 	if err != nil {
-		panic("Cannot decode credentials.")
+		panic("Failed to decode GCP credentials")
 	}
 
-	storageClient, err := storage.NewClient(context.Background(), option.WithCredentialsJSON(credentialsByte))
+	storageClient, err := storage.NewClient(
+		context.Background(),
+		option.WithCredentialsJSON(credentialsByte),
+	)
 	if err != nil {
-		panic("Cannot create storage client.")
+		panic("Failed to create GCP storage client")
 	}
 
-	FileClient = &FileClientStruct{
+	StorageClientGoogle = &StorageClientGoogleStruct{
 		bucket:        bucket,
 		project:       project,
 		storageClient: storageClient,
