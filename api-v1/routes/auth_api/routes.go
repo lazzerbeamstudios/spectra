@@ -9,14 +9,14 @@ import (
 func Register(api huma.API) {
 
 	huma.Register(api, huma.Operation{
-		OperationID: "Sign Up",
+		OperationID: "SignUp",
 		Method:      http.MethodPost,
 		Path:        "/auth/signup",
 		Tags:        []string{"auth"},
 	}, SignUpAPI)
 
 	huma.Register(api, huma.Operation{
-		OperationID: "Sign In",
+		OperationID: "SignIn",
 		Method:      http.MethodPost,
 		Path:        "/auth/signin",
 		Tags:        []string{"auth"},
