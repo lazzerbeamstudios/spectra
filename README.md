@@ -9,6 +9,7 @@
     brew install act
     brew install git
     brew install k3d
+    brew install asdf
     brew install helm
     brew install argocd
     brew install opentofu
@@ -19,7 +20,13 @@
 
 **install**
 
-    asdf install golang 1.23.3
+    asdf plugin add golang
+
+    asdf install golang 1.23.6
+
+**commands**
+
+    asdf list
 
 ## Go
 
