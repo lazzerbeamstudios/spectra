@@ -14,6 +14,8 @@ spec:
       labels:
         app: api-go-app
     spec:
+      imagePullSecrets:
+        - name: container-secret
       containers:
         - name: api-go-container
           imagePullPolicy: Always
@@ -44,6 +46,8 @@ spec:
       labels:
         app: cron-go-app
     spec:
+      imagePullSecrets:
+        - name: container-secret
       containers:
         - name: cron-go-container
           imagePullPolicy: Always

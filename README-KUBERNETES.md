@@ -24,3 +24,7 @@
 
     kubectl create namespace [namespace]
     kubectl delete namespace [namespace]
+
+**secret**
+
+    kubectl create secret docker-registry container-secret --docker-server=ghcr.io --docker-username=[username] --docker-email=[email] --docker-password=[password] -n [namespace]
