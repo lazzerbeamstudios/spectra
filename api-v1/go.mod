@@ -6,7 +6,7 @@ toolchain go1.23.3
 
 require (
 	cloud.google.com/go/storage v1.43.0
-	entgo.io/ent v0.14.4
+	entgo.io/ent v0.14.2
 	github.com/danielgtaylor/huma/v2 v2.25.0
 	github.com/go-co-op/gocron/v2 v2.12.3
 	github.com/golang-jwt/jwt/v5 v5.2.1
