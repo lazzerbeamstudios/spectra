@@ -9,21 +9,21 @@ import (
 func Register(api huma.API) {
 
 	huma.Register(api, huma.Operation{
-		OperationID: "ProfileGet",
+		OperationID: "ProfileGetAPI",
 		Method:      http.MethodGet,
 		Path:        "/users/profile",
 		Tags:        []string{"users"},
 	}, ProfileGetAPI)
 
 	huma.Register(api, huma.Operation{
-		OperationID: "ProfileUpdate",
+		OperationID: "ProfileUpdateAPI",
 		Method:      http.MethodPut,
 		Path:        "/users/profile",
 		Tags:        []string{"users"},
 	}, ProfileUpdateAPI)
 
 	huma.Register(api, huma.Operation{
-		OperationID: "ProfileUpdateEmail",
+		OperationID: "ProfileUpdateEmailAPI",
 		Method:      http.MethodPut,
 		Path:        "/users/profile/email",
 		Tags:        []string{"users"},
