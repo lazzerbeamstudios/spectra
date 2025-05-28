@@ -15,8 +15,8 @@ import (
 
 type SignUpInput struct {
 	Body struct {
-		Password string `json:"password" minLength:"8" maxLength:"30"`
-		Email    string `json:"email" minLength:"2" maxLength:"30" format:"email"`
+		Password string `json:"password" minLength:"8" maxLength:"60"`
+		Email    string `json:"email" minLength:"2" maxLength:"60" format:"email"`
 	}
 }
 
