@@ -1,4 +1,10 @@
 # docker
+docker-login:
+	docker login ghcr.io
+
+docker-logout:
+	docker logout ghcr.io
+
 docker-network:
 	docker network create docker-network --driver=bridge --attachable
 
@@ -42,14 +48,17 @@ helm-uninstall:
 	helm uninstall api
 
 # gcp
-gcp-auth:
+gcp-auth-login:
 	gcloud auth login
 
-gcp-auth-docker:
-	gcloud auth configure-docker us-central1-docker.pkg.dev
+gcp-auth-revoke:
+	gcloud auth revoke
 
-gcp-auth-terraform:
+gcp-auth-login-terraform:
 	gcloud auth application-default login
+
+gcp-auth-revoke-terraform:
+	gcloud auth application-default revoke
 
 gcp-create-vpc:
 	gcloud compute networks create vpc-v1 --subnet-mode=auto --project [project]
