@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker_tag="ute1732552258"
+docker_tag="ute1748635152"
 epoch_time="ute$(date +%s)"
 
 files=(

@@ -3,8 +3,6 @@
 tmp/
 
 api-go
-terraform.tfstate
-terraform.tfstate.backup
 
 *.air.toml
 *.DS_Store

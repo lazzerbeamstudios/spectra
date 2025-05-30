@@ -9,7 +9,7 @@ import (
 func Register(api huma.API) {
 
 	huma.Register(api, huma.Operation{
-		OperationID: "Home Get",
+		OperationID: "HomeGetAPI",
 		Method:      http.MethodGet,
 		Path:        "/",
 		Tags:        []string{"home"},
