@@ -4,7 +4,7 @@ go-run-dev:
 
 # ent
 ent-generate:
-	go get entgo.io/ent/cmd/internal/printer@v0.14.2
+	go get entgo.io/ent/cmd/internal/printer@v0.14.5
 	go generate ./ent
 	go mod tidy
 
