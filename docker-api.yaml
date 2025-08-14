@@ -3,7 +3,7 @@ version: "3.9"
 services:
   api-service:
     build: .
-    image: ghcr.io/lazzerbeamstudios/spectra:ute1748635152
+    image: ghcr.io/lazzerbeamstudios/spectra:ute1755143243
     volumes:
       - .:/code
     ports:
