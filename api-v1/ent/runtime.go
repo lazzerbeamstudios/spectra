@@ -3,8 +3,8 @@
 package ent
 
 import (
-	"api-go/ent/schema"
 	"api-go/ent/user"
+	"api-go/schemas"
 	"time"
 )
 
@@ -12,7 +12,7 @@ import (
 // (default values, validators, hooks and policies) and stitches it
 // to their package variables.
 func init() {
-	userFields := schema.User{}.Fields()
+	userFields := schemas.User{}.Fields()
 	_ = userFields
 	// userDescCreated is the schema descriptor for created field.
 	userDescCreated := userFields[3].Descriptor()
