@@ -22,4 +22,11 @@ func Register(api huma.API) {
 		Tags:        []string{"auth"},
 	}, SignInAPI)
 
+	huma.Register(api, huma.Operation{
+		OperationID: "ForgotPasswordPostAPI",
+		Method:      http.MethodPost,
+		Path:        "/auth/forgotpassword",
+		Tags:        []string{"auth"},
+	}, ForgotPasswordPostAPI)
+
 }
