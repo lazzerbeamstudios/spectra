@@ -9,6 +9,7 @@ import (
 
 	"api-go/ent/user"
 	"api-go/scripts/codes"
+	"api-go/utils/cache"
 	"api-go/utils/db"
 )
 
@@ -33,7 +34,7 @@ func ForgotPasswordPostAPI(ctx context.Context, input *ForgotPasswordPostInput) 
 	}
 
 	code := codes.GenerateRandomLetters() + strconv.Itoa(userObj.ID)
-	// cache.SetKey(code, strconv.Itoa(userObj.ID), 21600)
+	cache.SetKey(code, strconv.Itoa(userObj.ID), 21600)
 
 	fmt.Println(code)
 
