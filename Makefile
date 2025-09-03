@@ -11,12 +11,16 @@ docker-network:
 docker-postgres:
 	docker compose -f docker-postgres.yaml up -d
 
+docker-valkey:
+	docker compose -f docker-valkey.yaml up -d
+
 docker-api:
 	docker compose -f docker-api.yaml up
 
 docker-run:
 	$(MAKE) docker-network
 	$(MAKE) docker-postgres
+	$(MAKE) docker-valkey
 	$(MAKE) docker-api
 
 docker-tag:
