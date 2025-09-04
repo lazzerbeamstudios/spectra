@@ -36,10 +36,10 @@ docker-run:
 	$(MAKE) docker-api
 
 docker-stop:
-	$(MAKE) docker-network-stop
-	$(MAKE) docker-postgres-stop
-	$(MAKE) docker-valkey-stop
 	$(MAKE) docker-api-stop
+	$(MAKE) docker-valkey-stop
+	$(MAKE) docker-postgres-stop
+	$(MAKE) docker-network-stop
 
 docker-tag:
 	sh docker_tag.sh
