@@ -14,6 +14,9 @@ docker-network-stop:
 docker-postgres:
 	docker compose -f docker-postgres.yaml up -d
 
+docker-postgres-stop:
+	docker compose -f docker-postgres.yaml down
+
 docker-valkey:
 	docker compose -f docker-valkey.yaml up -d
 
@@ -28,6 +31,7 @@ docker-run:
 
 docker-stop:
 	$(MAKE) docker-network-stop
+	$(MAKE) docker-postgres-stop
 
 docker-tag:
 	sh docker_tag.sh
