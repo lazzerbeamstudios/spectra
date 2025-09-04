@@ -12,14 +12,14 @@ import (
 	"api-go/utils/password"
 )
 
-type PasswordCodePostInput struct {
+type ResetPasswordPostInput struct {
 	Body struct {
 		Code     string `json:"code"`
 		Password string `json:"password"`
 	}
 }
 
-func (input *PasswordCodePostInput) Resolve(ctx huma.Context) []error {
+func (input *ResetPasswordPostInput) Resolve(ctx huma.Context) []error {
 	var err error
 	input.Body.Password, err = password.HashPassword(input.Body.Password)
 	if err != nil {
@@ -28,13 +28,13 @@ func (input *PasswordCodePostInput) Resolve(ctx huma.Context) []error {
 	return nil
 }
 
-type PasswordCodePostOutput struct {
+type ResetPasswordPostOutput struct {
 	Body struct {
 		Message string `json:"message"`
 	}
 }
 
-func PasswordCodePostAPI(ctx context.Context, input *PasswordCodePostInput) (*PasswordCodePostOutput, error) {
+func ResetPasswordPostAPI(ctx context.Context, input *ResetPasswordPostInput) (*ResetPasswordPostOutput, error) {
 	userIDCache, err := cache.GetKey(input.Body.Code)
 	if err != nil {
 		return nil, huma.Error404NotFound("Code not found.")
@@ -59,7 +59,7 @@ func PasswordCodePostAPI(ctx context.Context, input *PasswordCodePostInput) (*Pa
 		return nil, huma.Error400BadRequest("Unable to update password.")
 	}
 
-	response := &PasswordCodePostOutput{}
+	response := &ResetPasswordPostOutput{}
 	response.Body.Message = "Your password has been changed successfully."
 	return response, nil
 }

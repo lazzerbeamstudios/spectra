@@ -30,10 +30,10 @@ func Register(api huma.API) {
 	}, ForgotPasswordPostAPI)
 
 	huma.Register(api, huma.Operation{
-		OperationID: "PasswordCodePostAPI",
+		OperationID: "ResetPasswordPostAPI",
 		Method:      http.MethodPost,
-		Path:        "/auth/passwordcode",
+		Path:        "/auth/resetpassword",
 		Tags:        []string{"auth"},
-	}, PasswordCodePostAPI)
+	}, ResetPasswordPostAPI)
 
 }
