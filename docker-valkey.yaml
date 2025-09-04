@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  valkey-service:
+    image: valkey/valkey:8.0.0
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - valkey:/var/lib/valkey/data/
+    command: >
+      sh -c
+      "valkey-server"
+    networks:
+      docker-network: {}
+
+volumes:
+  valkey:
+
+networks:
+  docker-network:
+    external: true

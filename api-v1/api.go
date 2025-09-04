@@ -18,6 +18,7 @@ import (
 	"api-go/routes/home_api"
 	"api-go/routes/users_api"
 	"api-go/utils/auth"
+	"api-go/utils/cache"
 	"api-go/utils/db"
 )
 
@@ -37,6 +38,7 @@ func main() {
 
 		db.SetEntDB(cfg.Database)
 		db.SetBunDB(cfg.Database)
+		cache.SetCache(cfg.VALKEY)
 		auth.SetSecretJWT(cfg.Secret)
 
 		mutations.UserHook()

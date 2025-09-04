@@ -15,6 +15,7 @@ require (
 	github.com/uptrace/bun v1.2.15
 	github.com/uptrace/bun/dialect/pgdialect v1.2.15
 	github.com/uptrace/bun/driver/pgdriver v1.2.15
+	github.com/valkey-io/valkey-go v1.0.64
 	golang.org/x/crypto v0.41.0
 	google.golang.org/api v0.189.0
 )
