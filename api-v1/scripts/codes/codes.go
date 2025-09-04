@@ -5,7 +5,7 @@ import "math/rand"
 func GenerateRandomLetters() string {
 	validLetters := "abcdefghjkmnopqrstuvwxyz"
 	result := ""
-	for i := 0; i < 3; i++ {
+	for range 3 {
 		index := rand.Intn(len(validLetters))
 		result += string(validLetters[index])
 	}
