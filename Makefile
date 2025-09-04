@@ -8,6 +8,9 @@ docker-logout:
 docker-network:
 	docker network create docker-network --driver=bridge --attachable
 
+docker-network-stop:
+	docker network rm docker-network
+
 docker-postgres:
 	docker compose -f docker-postgres.yaml up -d
 
@@ -22,6 +25,9 @@ docker-run:
 	$(MAKE) docker-postgres
 	$(MAKE) docker-valkey
 	$(MAKE) docker-api
+
+docker-stop:
+	$(MAKE) docker-network-stop
 
 docker-tag:
 	sh docker_tag.sh
