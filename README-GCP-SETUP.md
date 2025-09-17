@@ -4,7 +4,7 @@
 
 **1. Create Service Account:**
 
-    gcloud iam service-accounts create [project-initials]-api --display-name="[project-initials]-api" --project [project]-gcp
+    gcloud iam service-accounts create [project]-api --display-name="[project]-api" --project [project]-gcp
     gcloud projects add-iam-policy-binding [project]-gcp --member="serviceAccount:[service_account_email]" --role="roles/storage.admin"
     gcloud iam service-accounts keys create --iam-account=[service_account_email] gcp.json
 
@@ -36,7 +36,7 @@
 
 **2. Create new VPC network by running:**
 
-    make gcp-auth-login
+    make gcp-auth
     make gcp-create-vpc
 
 **3. Create PostgreSQL:**
@@ -60,14 +60,14 @@ postgres://postgres:[PASSWORD]@[IP_ADDRESS]:5432/postgres?sslmode=disable
 
 **3. OpenTofu**
 
-    make gcp-auth-login-terraform
+    make gcp-auth-terraform
     tofu init
     tofu plan
     tofu apply
 
 **4. GKE**
 
-    make gcp-auth-login
+    make gcp-auth
     make gcp-auth-gke
 
 **5. Argo CD**
@@ -75,6 +75,7 @@ postgres://postgres:[PASSWORD]@[IP_ADDRESS]:5432/postgres?sslmode=disable
     https://argo-cd.readthedocs.io/en/stable/
 
     make argocd-create
+    make argocd-password
     make argocd-port
 
     kubectl create secret docker-registry container-secret --docker-server=ghcr.io --docker-username=[username] --docker-email=[email] --docker-password=[password] -n [namespace]
