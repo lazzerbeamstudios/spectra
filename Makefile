@@ -70,23 +70,23 @@ helm-uninstall:
 	helm uninstall api
 
 # gcp
-gcp-auth-login:
+gcp-auth:
 	gcloud auth login
 
-gcp-auth-revoke:
-	gcloud auth revoke
+gcp-auth-docker:
+	gcloud auth configure-docker us-central1-docker.pkg.dev
 
-gcp-auth-login-terraform:
+gcp-auth-terraform:
 	gcloud auth application-default login
 
-gcp-auth-revoke-terraform:
-	gcloud auth application-default revoke
-
 gcp-create-vpc:
-	gcloud compute networks create vpc-v1 --subnet-mode=auto --project [project]
+	gcloud compute networks create vpc-v1 --subnet-mode=auto --project [project]-gcp
 
 gcp-delete-vpc:
-	gcloud compute networks delete vpc-v1 --quiet --project [project]
+	gcloud compute networks delete vpc-v1 --quiet --project [project]-gcp
+
+gcp-auth-gke:
+	gcloud container clusters get-credentials gke-v1-standard --zone us-central1-a --project [project]-gcp
 
 # argocd
 argocd-create:
