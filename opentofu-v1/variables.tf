@@ -1,6 +1,6 @@
 # project
 variable "project" {
-  default = "lazzerbeam-gcp"
+  default = "[project]-gcp"
 }
 
 # region
@@ -33,7 +33,7 @@ variable "node_pool_node_count_1" {
 }
 
 variable "node_pool_machine_type_1" {
-  default = "e2-medium"
+  default = "e2-small"
 }
 
 variable "node_pool_disk_size_gb_1" {

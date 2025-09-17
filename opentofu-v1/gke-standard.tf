@@ -1,7 +1,7 @@
 resource "google_container_cluster" "gke_standard" {
   name = "${var.gke_name}-standard"
 
-  network  = google_compute_network.vpc.name
+  network  = var.vpc_name
   location = var.zone
 
   deletion_protection = false
