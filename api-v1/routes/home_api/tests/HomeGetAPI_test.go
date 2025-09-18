@@ -26,7 +26,7 @@ func Test_HomeGetAPI(t *testing.T) {
 		t.Fatalf("Failed to unmarshal response: %s", err.Error())
 	}
 
-	if !strings.EqualFold(responseOutput.Message, "Welcome to Lazzer Beam") {
+	if !strings.EqualFold(responseOutput.Message, "Welcome to Spectra") {
 		t.Fatalf("Unexpected response: %s", response.Body.String())
 	}
 }
